@@ -1,0 +1,341 @@
+* {
+    box-sizing: border-box;
+}
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Arial, sans-serif;
+    padding: 40px;
+    background-color: #fff;
+}
+
+.filter-group {
+    max-width: 400px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 12px 16px;
+    background-color: #fafafa;
+}
+
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.filter-title {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 16px;
+    color: #111;
+}
+
+.filter-title::before {
+    content: "–";
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-color: #f36;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    line-height: 24px;
+    border-radius: 3px;
+    margin-right: 8px;
+    font-size: 20px;
+}
+
+.filter-count {
+    font-size: 14px;
+    color: #aaa;
+}
+
+.checkbox-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label.checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+}
+
+label.checkbox input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #999;
+    border-radius: 3px;
+    margin-right: 12px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+label.checkbox input[type="checkbox"]:checked {
+    background-color: #f36;
+    border-color: #f36;
+}
+
+label.checkbox input[type="checkbox"]:checked::after {
+    content: "✓";
+    color: white;
+    font-size: 18px;
+    position: absolute;
+    top: -2px;
+    left: 2px;
+}
+
+label.checkbox input[type="checkbox"]:indeterminate {
+    background-color: #f36;
+    border-color: #f36;
+}
+
+label.checkbox input[type="checkbox"]:indeterminate::after {
+    content: "–";
+    color: white;
+    font-size: 18px;
+    position: absolute;
+    top: -3px;
+    left: 3px;
+    font-weight: bold;
+}
+/* tabs */
+.tabs {
+    display: flex;
+    padding: 20px;
+
+    border-bottom: 2px solid #ccc;
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.tab.active {
+    border-bottom: 3px solid #007bff;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px 0;
+}
+
+.tab-content.active {
+    display: block;
+}
+/* Slideshow */
+.slideshow-container {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    margin: 40px auto;
+    overflow: hidden;
+    background: #222;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+.controls {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 12px;
+    transform: translateY(-50%);
+    z-index: 3;
+}
+.controls button {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px 14px;
+    font-size: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.controls button:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+.slide {
+    opacity: 0;
+    /* transform: translateX(100%);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); */
+    transition-property: opacity, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    z-index: 2;
+}
+.slide-in-right {
+    opacity: 1;
+    transform: translateX(0);
+    z-index: 2;
+}
+.slide-in-left {
+    opacity: 1;
+    transform: translateX(0);
+    z-index: 2;
+}
+.slide-out-left {
+    opacity: 0;
+    transform: translateX(-100%);
+    z-index: 1;
+}
+.slide-out-right {
+    opacity: 0;
+    transform: translateX(100%);
+    z-index: 1;
+}
+/* Pagination */
+.pagination {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    translate: -50%;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+    z-index: 999;
+}
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ccc;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.dot.active {
+    background: #222;
+}
+/* Live code editor */
+.editor-container {
+    display: flex;
+    height: 100vh;
+    font-size: 3.2rem;
+}
+.editor-left,
+.editor-right {
+    flex: 1 1 0;
+    height: 95%;
+    box-sizing: border-box;
+}
+.editor-left {
+    background: #181c23;
+    padding: 24px 16px 16px 16px;
+    display: flex;
+    flex-direction: column;
+}
+.editor-label {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: #8ec07c;
+    letter-spacing: 1px;
+}
+textarea {
+    flex: 1;
+    width: 100%;
+    resize: none;
+    background: #23272f;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 6px;
+    font-size: 1.3rem;
+    font-family: "Fira Mono", monospace;
+    padding: 12px;
+    outline: none;
+    transition: border 0.2s;
+}
+textarea:focus {
+    border: 1.5px solid #8ec07c;
+}
+.editor-right {
+    background: #22262e;
+    padding: 24px 16px 16px 16px;
+    display: flex;
+    flex-direction: column;
+}
+.preview-label {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: #fabd2f;
+    letter-spacing: 1px;
+}
+iframe {
+    flex: 1;
+    width: 100%;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background: #fff;
+}
+@media (max-width: 700px) {
+    .editor-container {
+        flex-direction: column;
+    }
+    .editor-left,
+    .editor-right {
+        width: 100vw;
+        height: 50vh;
+    }
+}
+.custom-context-menu {
+    position: absolute;
+    z-index: 9999;
+    min-width: 140px;
+    background: #23272f;
+    border: 1.5px solid #444;
+    border-radius: 8px;
+    overflow: hidden;
+    display: none;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+.context-menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    padding: 12px 18px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.3s ease-in-out;
+}
+.context-menu-item:hover {
+    background: #8ec07c;
+    color: #23272f;
+}
